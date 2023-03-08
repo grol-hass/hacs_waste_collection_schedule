@@ -17,6 +17,7 @@ class Customize:
         waste_type,
         alias=None,
         show=True,
+        offset=None,
         icon=None,
         picture=None,
         use_dedicated_calendar=False,
@@ -25,6 +26,7 @@ class Customize:
         self._waste_type = waste_type
         self._alias = alias
         self._show = show
+        self._offset = offset
         self._icon = icon
         self._picture = picture
         self._use_dedicated_calendar = use_dedicated_calendar
@@ -43,6 +45,10 @@ class Customize:
         return self._show
 
     @property
+    def offset(self):
+        return self._offset
+
+    @property
     def icon(self):
         return self._icon
 
@@ -59,7 +65,7 @@ class Customize:
         return self._dedicated_calendar_title
 
     def __repr__(self):
-        return f"Customize{{waste_type={self._waste_type}, alias={self._alias}, show={self._show}, icon={self._icon}, picture={self._picture}}}"
+        return f"Customize{{waste_type={self._waste_type}, alias={self._alias}, show={self._show}, offset={self._offset}, icon={self._icon}, picture={self._picture}}}"
 
 
 def filter_function(entry: Collection, customize: Dict[str, Customize]):
@@ -75,6 +81,8 @@ def customize_function(entry: Collection, customize: Dict[str, Customize]):
     if c is not None:
         if c.alias is not None:
             entry.set_type(c.alias)
+        if c.offset is not None:
+            entry.add_date_offset(c.offset)
         if c.icon is not None:
             entry.set_icon(c.icon)
         if c.picture is not None:

@@ -16,6 +16,9 @@ class CollectionBase(dict):  # inherit from dict to enable JSON serialization
     def date(self):
         return self._date
 
+    def add_date_offset(self, offset: datetime.timedelta):
+        self._date += offset
+
     @property
     def daysTo(self):
         return (self._date - datetime.datetime.now().date()).days

@@ -35,6 +35,7 @@ CONF_CUSTOMIZE = "customize"
 CONF_TYPE = "type"
 CONF_ALIAS = "alias"
 CONF_SHOW = "show"
+CONF_OFFSET = "offset"
 CONF_ICON = "icon"
 CONF_PICTURE = "picture"
 CONF_USE_DEDICATED_CALENDAR = "use_dedicated_calendar"
@@ -45,6 +46,7 @@ CUSTOMIZE_CONFIG = vol.Schema(
         vol.Optional(CONF_TYPE): cv.string,
         vol.Optional(CONF_ALIAS): cv.string,
         vol.Optional(CONF_SHOW): cv.boolean,
+        vol.Optional(CONF_OFFSET): cv.time_period_str,
         vol.Optional(CONF_ICON): cv.icon,
         vol.Optional(CONF_PICTURE): cv.string,
         vol.Optional(CONF_USE_DEDICATED_CALENDAR): cv.boolean,
@@ -101,6 +103,7 @@ async def async_setup(hass: HomeAssistant, config: dict):
                 waste_type=c[CONF_TYPE],
                 alias=c.get(CONF_ALIAS),
                 show=c.get(CONF_SHOW, True),
+                offset=c.get(CONF_OFFSET),
                 icon=c.get(CONF_ICON),
                 picture=c.get(CONF_PICTURE),
                 use_dedicated_calendar=c.get(CONF_USE_DEDICATED_CALENDAR, False),

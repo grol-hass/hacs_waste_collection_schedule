@@ -58,6 +58,7 @@ waste_collection_schedule:
         - type: TYPE
           alias: ALIAS
           show: SHOW
+          offset: OFFSET
           icon: ICON
           picture: PICTURE
           use_dedicated_calendar: USE_DEDICATED_CALENDAR
@@ -95,6 +96,7 @@ waste_collection_schedule:
 | type | string | required | The identity of the waste type as returned from the source  |
 | alias | string | optional | A more readable, or user-friendly, name for the type of waste being collected. Default is `None` |
 | show | boolean | optional | Show (`True`) or hide (`False`) collections of this specific waste type. Default is `True` |
+| offset | time period | optional | Add a time offset (eg. "24:00" for 1 day into the future) to entries of this specific waste type. Default is `None` |
 | icon | string | optional | Icon to use for this specific waste type. Icons from the Home Assistant mdi icon set can be used. Default is `None`. |
 | picture | string | optional | string representation of the path to a picture used to represent this specific waste type. Default is `None` |
 
